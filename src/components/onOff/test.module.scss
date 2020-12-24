@@ -1,0 +1,6 @@
+.hello {
+  background: red;
+  &:first-child {
+    color: green;
+  }
+}
