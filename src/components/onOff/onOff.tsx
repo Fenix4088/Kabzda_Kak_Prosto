@@ -3,11 +3,12 @@ import styles from './test.module.scss';
 
 
 type PropsType = {
-  on: boolean
+  // on: boolean
+  setOnOutSide: (value: boolean) => void
 }
 
 
-export const OnOff = () => {
+export const OnOff = (props: PropsType) => {
 
   const [on, setOn] = useState<boolean>(false)
 
@@ -43,10 +44,20 @@ export const OnOff = () => {
 
   };
 
+
+  const onBtnClickHandler = (value: boolean) => {
+    setOn(value)
+    props.setOnOutSide(value)
+  }
+
   return (
     <div>
-      <div style={onStyle} onClick={() => {setOn(true)}}>On</div>
-      <div style={offStyle} onClick={() => {setOn(false)}}>Off</div>
+      <div style={onStyle} onClick={() => {
+        onBtnClickHandler(true)
+      }}>On</div>
+      <div style={offStyle} onClick={() => {
+        onBtnClickHandler(false)
+      }}>Off</div>
       <div style={indicatorStyle}></div>
     </div>
   );
