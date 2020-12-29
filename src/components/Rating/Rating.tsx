@@ -2,7 +2,7 @@ import React from 'react';
 import {Star} from "./Star/Star";
 import {StarsStatusType} from "../../App";
 
-type RatingPropsType = {
+export type RatingPropsType = {
     changeStatusCallBack: (id: number) => void
     ratingStatus: StarsStatusType
 }

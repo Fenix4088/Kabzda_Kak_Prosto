@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import {UncontrolledStar} from "./UncontrolledStar/UncontrolledStar";
 
-export const UncontrolledRating = () => {
 
-    const [value, setValue] = useState<number>(0)
+export type UncontrolledRatingPropsType = {
+    test?: number
+}
+
+export const UncontrolledRating = (props: UncontrolledRatingPropsType) => {
+
+    const [value, setValue] = useState<number>(props.test ? props.test : 0)
 
     return (
         <div>
