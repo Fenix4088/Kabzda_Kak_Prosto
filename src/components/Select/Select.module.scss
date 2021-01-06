@@ -1,0 +1,48 @@
+.wrapper {
+  margin-top: 25px;
+}
+
+.select {
+  position: relative;
+  max-width: 100px;
+  border-bottom: 1px solid blue;
+
+  div {
+    position: absolute;
+    top: 0;
+    left: 37px;
+    display: inline-block;
+    margin-left: 50px;
+    transition: all .2s ease-in;
+  }
+}
+
+.rotated {
+  transform: rotateX(180deg);
+  transition: all .2s ease-in;
+}
+
+.list {
+  max-width: 100px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid blue;
+  border-top: none;
+
+  li {
+    cursor: pointer;
+    &:hover {
+      background: #a0a0f3;
+    }
+  }
+
+  li:nth-child(odd) {
+    background: rgba(30, 157, 163, .5);
+  }
+
+}
+
+.selected {
+  background: #a0a0f3 !important;
+}

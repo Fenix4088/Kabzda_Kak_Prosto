@@ -1,54 +1,66 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
-export type  PropsUncontrolledAccordionType = {
-
-    titleValue: string
-    collapsed: boolean
-    setCollapsed: (value: boolean) => void
-    /**
-     * Optional color text*/
-    color?: string
+type ItemType = {
+  title: string,
+  value: any
 }
 
-export const ControlledAccordion = (props: PropsUncontrolledAccordionType) => {
+export type PropsAccordionType = {
+  titleValue: string;
+  collapsed: boolean;
+  setCollapsed: (value: boolean) => void;
+  color?: string;
+  items: Array<ItemType>;
+  onClick: (value: any) => void
+};
 
-    return (
-        <div>
-            <AccordionTitle
-                title={props.titleValue}
-                setCollapsed={props.setCollapsed}
-                collapsed={props.collapsed}
-                color={props.color}
-            />
-            {!props.collapsed && <AccordionBody/>}
-        </div>
-    );
+export const ControlledAccordion = (props: PropsAccordionType) => {
+  return (
+    <div>
+      <AccordionTitle
+        title={props.titleValue}
+        setCollapsed={props.setCollapsed}
+        collapsed={props.collapsed}
+        color={props.color}
+      />
+      {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
+    </div>
+  );
+};
 
+type PropsAccordionTitleType = {
+  title: string;
+  setCollapsed: (value: boolean) => void;
+  collapsed: boolean;
+  color?: string;
+};
+
+const AccordionTitle = (props: PropsAccordionTitleType) => {
+  return (
+    <h3
+      onClick={() => props.setCollapsed(!props.collapsed)}
+      style={{ color: props.color ? props.color : "black" }}
+    >
+      --{props.title}--
+    </h3>
+  );
 };
 
 
-type  PropsAccordionTitleType = {
-    title: string
-    setCollapsed: (value: boolean) => void
-    collapsed: boolean
-    color?: string
-}
+export type AccordionBodyType = {
+  items: Array<ItemType>
+  onClick: (value: any) => void
+};
 
-const AccordionTitle = (props: PropsAccordionTitleType) => {
-
-    return (
-        <h3 onClick={() => props.setCollapsed(!props.collapsed)} style={{color: props.color ? props.color : "black"}}>--{props.title}--</h3>
-    );
-}
-
-const AccordionBody = () => {
-    return (
-        <div>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
-        </div>
-    );
-}
+const AccordionBody = (props: AccordionBodyType) => {
+  console.log(props.items)
+  return (
+    <div>
+      <ul>
+        {props.items.map((i, index) => {
+          return <li onClick={() => {props.onClick(i.value)}} key={index}>{i.title}</li>;
+        })}
+      </ul>
+    </div>
+  );
+};

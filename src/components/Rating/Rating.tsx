@@ -13,7 +13,7 @@ export const Rating = (props: RatingPropsType) => {
             {props.ratingStatus.map((item, index) =>
                 <Star
                     key={index}
-                    status={item.status}
+                    isDone={item.isDone}
                     index={index}
                     changeStatusCallBack={props.changeStatusCallBack}
                 />)}

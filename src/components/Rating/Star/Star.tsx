@@ -1,7 +1,7 @@
 import React from 'react';
 
 type StarPropsType = {
-    status: boolean
+    isDone: boolean
     index: number
     changeStatusCallBack: (id:number) => void
 }
@@ -10,7 +10,7 @@ export const Star = (props: StarPropsType) => {
 
     const starStyle = {
         marginRight: "10px",
-        color: props.status ? 'red' : "black"
+        color: props.isDone ? 'red' : "black"
     }
 
     const onStarClickHAndler = () => {

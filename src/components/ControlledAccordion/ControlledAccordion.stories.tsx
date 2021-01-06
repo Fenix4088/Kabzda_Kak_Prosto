@@ -1,42 +1,64 @@
-import React, {ComponentProps, useState} from 'react';
-import { Story } from '@storybook/react/types-6-0';
-import {action} from "@storybook/addon-actions";
-import {ControlledAccordion, PropsUncontrolledAccordionType} from "./ControlledAccordion";
-
+import React, { ComponentProps, useState } from "react";
+import { Story } from "@storybook/react/types-6-0";
+import { action } from "@storybook/addon-actions";
+import { ControlledAccordion, PropsAccordionType } from "./ControlledAccordion";
 
 export default {
-    title: 'ControlledAccordion',
-    component: ControlledAccordion,
+  title: "ControlledAccordion",
+  component: ControlledAccordion,
 };
 
-const ControlledAccordionTemplate:
-    Story<PropsUncontrolledAccordionType> = (args) => <ControlledAccordion {...args} />;
+const ControlledAccordionTemplate: Story<PropsAccordionType> = (args) => (
+  <ControlledAccordion {...args} />
+);
 
-
+const onClickCallback = action("some item was clicked");
 
 export const Collapsed = ControlledAccordionTemplate.bind({});
 Collapsed.args = {
-    titleValue: "Menu is open",
-    collapsed: false,
-    setCollapsed: action("Close"),
-    color: "#099344"
+  titleValue: "Menu is open",
+  collapsed: false,
+  setCollapsed: action("Close"),
+  color: "#099344",
+  items: [
+    { title: "Yehor", value: "son" },
+    { title: "Tania", value: "mom" },
+    { title: "Janna", value: "granny" },
+  ],
+  onClick: onClickCallback,
 };
 
 export const Uncollapsed = ControlledAccordionTemplate.bind({});
 Uncollapsed.args = {
-    titleValue: "Menu is close",
-    collapsed: true,
-    setCollapsed: action("Open"),
+  titleValue: "Menu is close",
+  collapsed: true,
+  setCollapsed: action("Open"),
+  onClick: onClickCallback,
 };
 
-export const InteractiveMode: Story<PropsUncontrolledAccordionType>  = (args) => {
-    const [collapsed , setCollapsed] = useState(false)
-    return <ControlledAccordion {...args}  collapsed={collapsed}  setCollapsed={()=>setCollapsed(!collapsed)}/>
+export const InteractiveMode: Story<PropsAccordionType> = (args) => {
+  const [collapsed, setCollapsed] = useState(false);
+  return (
+    <ControlledAccordion
+      {...args}
+      collapsed={collapsed}
+      onClick={onClickCallback}
+      setCollapsed={() => setCollapsed(!collapsed)}
+      items={[
+        { title: "Yehor", value: "son" },
+        { title: "Tania", value: "mom" },
+        {
+          title: "Janna",
+          value: "granny",
+        },
+      ]}
+    />
+  );
 };
 
 InteractiveMode.args = {
-    titleValue: "Accordion in business",
-}
+  titleValue: "Accordion in business",
+};
 
 
 
