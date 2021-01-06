@@ -1,5 +1,6 @@
 .wrapper {
   margin-top: 25px;
+outline: none;
 }
 
 .select {
@@ -33,7 +34,7 @@
   li {
     cursor: pointer;
     &:hover {
-      background: #a0a0f3;
+      background: #a0a0f3 !important;;
     }
   }
 
