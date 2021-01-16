@@ -7,6 +7,7 @@ import { type } from "os";
 import { UncontrolledRating } from "./components/UncontrolledRating/UncontrolledRating";
 import { ControlledOnOff } from "./components/ControlledOnOff/ControlledOnOff";
 import { Select } from "./components/Select/Select";
+import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
 
 export type StarsStatusType = Array<StartStatusItemType>;
 type StartStatusItemType = {
@@ -94,6 +95,7 @@ function App() {
         ]}
         onClick={onClick}
       />
+        <UncontrolledAccordion titleValue={"UncontrolledAccordion"}/>
       <Rating
         ratingStatus={ratingStatus}
         changeStatusCallBack={changeStatusCallBack}

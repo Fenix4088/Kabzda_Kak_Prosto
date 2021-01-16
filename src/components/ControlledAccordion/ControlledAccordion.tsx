@@ -15,6 +15,7 @@ export type PropsAccordionType = {
 };
 
 export const ControlledAccordion = (props: PropsAccordionType) => {
+
   return (
     <div>
       <AccordionTitle
