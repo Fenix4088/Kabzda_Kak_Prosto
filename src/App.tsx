@@ -105,7 +105,6 @@ function App() {
     </div>
   );
 }
-
 export default App;
 
 const TestDoubleInputs = () => {
