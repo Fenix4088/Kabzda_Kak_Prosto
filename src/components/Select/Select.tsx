@@ -1,15 +1,16 @@
 import React, { useState, MouseEvent, KeyboardEvent } from "react";
-import { SelectItemType } from "../../App";
+import {SelectItemType} from "../../App";
 import s from "./Select.module.scss";
 
 export type SelectPropsType = {
-  selected: string;
+  selected?: string;
   options: Array<SelectItemType>;
   onChange: (selectedValue: string) => void;
   testCollapsed?: boolean;
 };
 
 export const Select = (props: SelectPropsType) => {
+  console.log("Select")
   const [collapsed, setCollapsed] = useState<boolean>(
     props.testCollapsed ? props.testCollapsed : false
   );

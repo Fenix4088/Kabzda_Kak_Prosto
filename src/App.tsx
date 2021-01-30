@@ -7,7 +7,7 @@ import { type } from "os";
 import { UncontrolledRating } from "./components/UncontrolledRating/UncontrolledRating";
 import { ControlledOnOff } from "./components/ControlledOnOff/ControlledOnOff";
 import { Select } from "./components/Select/Select";
-import {UncontrolledAccordion} from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import { UncontrolledAccordion } from "./components/UncontrolledAccordion/UncontrolledAccordion";
 
 export type StarsStatusType = Array<StartStatusItemType>;
 type StartStatusItemType = {
@@ -15,9 +15,13 @@ type StartStatusItemType = {
 };
 
 export type SelectItemType = {
-    title: string;
-    value: any;
+  title?: string;
+  value?: any;
+  countryId?: number;
+  city?: string;
+  population?: number;
 };
+
 
 function App() {
   const starsStatus: Array<StartStatusItemType> = [
@@ -52,7 +56,7 @@ function App() {
 
   //! data for Select component
 
- const selectData = [
+  const selectData = [
     {
       title: "City",
       value: "Kiev",
@@ -69,9 +73,9 @@ function App() {
 
   const [selected, setSelected] = useState<string>("Kiev");
 
-  const onSelectChange = (selectedValue: string):void => {
-      setSelected(selectedValue);
-  }
+  const onSelectChange = (selectedValue: string): void => {
+    setSelected(selectedValue);
+  };
 
   //! //data for Select component
 
@@ -95,16 +99,21 @@ function App() {
         ]}
         onClick={onClick}
       />
-        <UncontrolledAccordion titleValue={"UncontrolledAccordion"}/>
+      <UncontrolledAccordion titleValue={"UncontrolledAccordion"} />
       <Rating
         ratingStatus={ratingStatus}
         changeStatusCallBack={changeStatusCallBack}
       />
       <UncontrolledRating />
-      <Select selected={selected} options={selectData} onChange={onSelectChange}/>
+      <Select
+        selected={selected}
+        options={selectData}
+        onChange={onSelectChange}
+      />
     </div>
   );
 }
+
 export default App;
 
 const TestDoubleInputs = () => {
