@@ -40,3 +40,40 @@ export const Example1 = () => {
         </>
     );
 };
+
+export const SetTimeoutExample = () => {
+    console.log("SetTimeoutExample")
+
+    const [counter, setCounter] = useState(1);
+    const [fake, setFake] = useState(1);
+
+    const [date, setDate] = useState(new Date);
+
+    useEffect(() => {
+        setInterval(() => {
+            setDate((state) => state = new Date)
+        }, 1000);
+    }, [date]);
+
+    const formatDate = (time: Date):string => {
+        return time.toLocaleTimeString("ru", {
+            hour: "2-digit", minute: "2-digit", second: "2-digit"
+        })
+    }
+
+    return (
+        <>
+            {console.log("Render")}
+            counter: {counter};
+            fake: {fake}
+            <br/>
+            {formatDate(date)}
+
+{/*            <button onClick={() => setFake(fake + 1)}>Fake+</button>
+            {fake}
+            <button onClick={() => setCounter(counter + 1)}>Counter+</button>
+            {counter}*/}
+
+        </>
+    );
+};
