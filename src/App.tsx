@@ -1,9 +1,8 @@
-import React, { ChangeEvent, useState } from "react";
+import React, {useState } from "react";
 import "./App.css";
 import { OnOff } from "./components/onOff/onOff";
 import { ControlledAccordion } from "./components/ControlledAccordion/ControlledAccordion";
 import { Rating } from "./components/Rating/Rating";
-import { type } from "os";
 import { UncontrolledRating } from "./components/UncontrolledRating/UncontrolledRating";
 import { ControlledOnOff } from "./components/ControlledOnOff/ControlledOnOff";
 import { Select } from "./components/Select/Select";

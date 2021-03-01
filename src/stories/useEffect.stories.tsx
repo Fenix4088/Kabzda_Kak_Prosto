@@ -58,6 +58,7 @@ export const SetTimeoutExample = () => {
     </>
   );
 };
+
 export const Clock = () => {
   const [date, setDate] = useState(new Date());
 
@@ -80,4 +81,55 @@ export const Clock = () => {
   };
 
   return <>{formatDate(date)}</>;
+};
+
+export const ResetEffectExample = () => {
+  console.log("ResetEffectExample");
+
+  const [counter, setCounter] = useState(1);
+
+  useEffect(() => {
+    console.log("Effect occurred: " + counter );
+
+    return () => {
+      console.log("Effect is dead")
+    }
+  }, [counter])
+
+
+  return (
+      <>
+        Hello counter: {counter}
+        <button onClick={() => {setCounter(counter + 1)}}> + </button>
+      </>
+  );
+};
+
+export const KeysTrackerExample = () => {
+  console.log("KeysTrackerExample");
+
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    console.log("Effect occurred: " + text );
+
+    const onAnyKeyPress = (e: KeyboardEvent):void => {
+      console.log(e.key);
+      // setText((state) => state + e.key)
+      setText(text + e.key)
+    }
+
+      window.addEventListener("keypress", onAnyKeyPress);
+
+    return () => {
+      window.removeEventListener("keypress", onAnyKeyPress);
+    }
+  }, [text])
+
+
+  return (
+      <>
+        Typed text: {text}
+      </>
+  );
 };
